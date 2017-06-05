@@ -10,7 +10,7 @@
       try {
         sh "docker build -t cd-demo ."
         sh "docker rm -f cd-demo || true"
-        sh "docker run -d -p 8080:8080 --name=cd-demo cd-demo"
+        sh "docker run -d -p 8081:8080 --name=cd-demo cd-demo"
         // env variable is used to set the server where go test will connect to run the test
         sh "docker run --rm -v ${WORKSPACE}:/go/src/cd-demo --link=cd-demo -e SERVER=cd-demo golang go test cd-demo -v --run Integration"
       }
